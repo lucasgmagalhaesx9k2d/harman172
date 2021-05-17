@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Harmanpreet_C0765590_MT</string>
+
+    <string name="heading">Car Rent Service</string>
+    <string name="question">How many days you want to rent?</string>
+    <string name="age">Driver\'s Age</string>
+
+
+    <string name="gps">GPS</string>
+    <string name="child_seat">Child Seat</string>
+    <string name="unlimited_millage">Unlimited Millage</string>
+
+    <string-array name="cars_list">
+        <item>Please choose a car</item>
+        <item>BMW</item>
+        <item>Audi</item>
+        <item>Volks Wagon</item>
+        <item>Mercedes</item>
+        <item>Peugeot</item>
+        <item>Cadillac</item>
+        <item>Ferrari</item>
+        <item>Nissan</item>
+        <item>Datsun</item>
+    </string-array>
+</resources>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="#ddc"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/heading"
+        android:gravity="center_horizontal"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        android:textColor="#000"/>
+
+    <Spinner
+        android:id="@+id/car_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:layout_gravity="center_horizontal"
+        android:entries="@array/cars_list"/>
+
+    <EditText
+        android:id="@+id/et_rent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Daily Rent"
+        android:layout_marginVertical="10dp"
+        android:focusable="false"
+        android:clickable="false"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question"/>
+
+        <TextView
+            android:id="@+id/tv_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="# Days"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+
+    <SeekBar
+        android:id="@+id/seekbar_days"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:max="10"
+        android:progress="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/age"
+        android:textColor="#000"
+        android:textSize="17sp"/>
+
+    <RadioGroup
+        android:id="@+id/rg_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp">
+
+        <RadioButton
+            android:id="@+id/rb_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Less than 20"
+            android:textColor="#050"/>
+        <RadioButton
+            android:id="@+id/rb_21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Between 21 and 60"
+            android:textColor="#050"/>
+        <RadioButton
+            android:id="@+id/rb_60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Above 60"
+            android:textColor="#050"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Options"
+        android:textColor="#000"
+        android:textSize="17sp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/cb_gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gps"
+                android:textColor="#050"
+                android:layout_marginHorizontal="5dp"/>
+            <CheckBox
+                android:id="@+id/cb_child"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/child_seat"
+                android:textColor="#050"
+                android:layout_marginHorizontal="5dp"/>
+            <CheckBox
+                android:id="@+id/cb_unlimited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unlimited_millage"
+                android:textColor="#050"
+                android:layout_marginHorizontal="5dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp">
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:layout_weight="1"
+                android:textSize="17sp"/>
+            <TextView
+                android:id="@+id/tv_total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Payment"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:textSize="17sp"/>
+        </TableRow>
+    </TableLayout>
+
+
+    <Button
+        android:id="@+id/btn_details"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="VIEW DETAIL"
+        android:textColor="#900"
+        android:textSize="14sp"
+        android:layout_gravity="center_horizontal"/>
+
+
+</LinearLayout>
