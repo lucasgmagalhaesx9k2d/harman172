@@ -22,4 +22,17 @@
         <item>Nissan</item>
         <item>Datsun</item>
     </string-array>
+
+    <string-array name="cars_rent">
+        <item>210</item>
+        <item>125</item>
+        <item>50</item>
+        <item>140</item>
+        <item>80</item>
+        <item>60</item>
+        <item>100</item>
+        <item>120</item>
+        <item>90</item>
+    </string-array>
+
 </resources>

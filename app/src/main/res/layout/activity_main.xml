@@ -66,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
         android:max="10"
+        android:min="1"
         android:progress="1" />
 
     <TextView
@@ -88,19 +89,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Less than 20"
-            android:textColor="#050"/>
+            android:textColor="#050"
+            android:onClick="selectAge"/>
         <RadioButton
             android:id="@+id/rb_21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Between 21 and 60"
-            android:textColor="#050"/>
+            android:textColor="#050"
+            android:onClick="selectAge"/>
         <RadioButton
             android:id="@+id/rb_60"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Above 60"
-            android:textColor="#050"/>
+            android:textColor="#050"
+            android:onClick="selectAge"/>
     </RadioGroup>
 
     <TextView
@@ -123,21 +127,24 @@
                 android:layout_height="wrap_content"
                 android:text="@string/gps"
                 android:textColor="#050"
-                android:layout_marginHorizontal="5dp"/>
+                android:layout_marginHorizontal="5dp"
+                android:onClick="selectOptions"/>
             <CheckBox
                 android:id="@+id/cb_child"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/child_seat"
                 android:textColor="#050"
-                android:layout_marginHorizontal="5dp"/>
+                android:layout_marginHorizontal="5dp"
+                android:onClick="selectOptions"/>
             <CheckBox
                 android:id="@+id/cb_unlimited"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/unlimited_millage"
                 android:textColor="#050"
-                android:layout_marginHorizontal="5dp"/>
+                android:layout_marginHorizontal="5dp"
+                android:onClick="selectOptions"/>
 
         </TableRow>
 
