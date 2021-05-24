@@ -2,10 +2,12 @@ package com.example.harmanpreet_c0765590_mt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -21,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tvRentDays, tvAmount, tvTotalAmount;
     SeekBar seekBar;
     RadioGroup rgAge;
-
+    Button btnDetails;
+    CheckBox cb1, cb2, cb3;
 
     double[] carRents = {20.5, 18.8, 100, 102, 115.5, 150.6, 90.6, 180, 175.6};
     double amount;
@@ -43,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         tvAmount = findViewById(R.id.tv_amount);
         tvTotalAmount = findViewById(R.id.tv_total_amount);
         rgAge = findViewById(R.id.rg_age);
+        btnDetails = findViewById(R.id.btn_details);
+
+        cb1 = findViewById(R.id.cb_gps);
+        cb2 = findViewById(R.id.cb_child);
+        cb3 = findViewById(R.id.cb_unlimited);
 
         tvRentDays.setText(String.valueOf(seekBar.getProgress()));
 
@@ -54,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     calculateAmount();
 //                    tvAmount.setText(String.valueOf(carRents[i-1]));
                 } else{
-                    etRent.setText("");
-                    tvAmount.setText("");
+                    clearFields();
                 }
             }
 
@@ -87,6 +94,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+            }
+        });
+
+
+        btnDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (validations()){
+                    CarInfo info = new CarInfo();
+                    info.setCarName(carsSpinner.getSelectedItem().toString());
+                    info.setCarRent(etRent.getText().toString());
+                    info.setDays(tvRentDays.getText().toString());
+                    if (rgAge.getCheckedRadioButtonId() == R.id.rb_20){
+                        info.setAge("Person's age is Less than 20");
+                    } else if (rgAge.getCheckedRadioButtonId() == R.id.rb_21){
+                        info.setAge("Person's age is between 21 and 60");
+                    } else if (rgAge.getCheckedRadioButtonId() == R.id.rb_60){
+                        info.setAge("Person ages above 60");
+                    }
+
+
+                    info.setAmount(tvAmount.getText().toString());
+                    info.setTotalAmount(tvTotalAmount.getText().toString());
+
+
+                    Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                    intent.putExtra("details",info);
+                    startActivity(intent);
+
+
+                    clearFields();
+
+
+                }
             }
         });
 
@@ -134,10 +175,8 @@ public class MainActivity extends AppCompatActivity {
 
         double amt = Double.valueOf(tvAmount.getText().toString());
 
-        CheckBox cb1, cb2, cb3;
-        cb1 = findViewById(R.id.cb_gps);
-        cb2 = findViewById(R.id.cb_child);
-        cb3 = findViewById(R.id.cb_unlimited);
+
+
 
 //        switch (view.getId()){
 //
@@ -218,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private double totalAmount(double amount){
-        return amount + ( amount * 13.0 / 100);
+        return amount + ( amount * (13.0 / 100));
     }
 
 
@@ -243,6 +282,18 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Please select a car from the list.", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    private void clearFields(){
+        carsSpinner.setSelection(0);
+        etRent.setText(String.valueOf(0.0));
+        seekBar.setProgress(1);
+        rgAge.clearCheck();
+        cb1.setChecked(false);
+        cb2.setChecked(false);
+        cb3.setChecked(false);
+        tvAmount.setText("Amount");
+        tvTotalAmount.setText("Total Payment");
     }
 }
 
