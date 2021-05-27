@@ -42,12 +42,13 @@
         android:id="@+id/tv_det_amt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="age"
+        android:text="amount"
+        android:layout_marginTop="20dp"
         android:textSize="17sp"/>
     <TextView
         android:id="@+id/tv_total_amt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="age"
+        android:text="total amount"
         android:textSize="17sp"/>
 </LinearLayout>

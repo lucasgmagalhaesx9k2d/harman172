@@ -6,10 +6,10 @@ public class CarInfo implements Serializable {
 
     private String carName;
     private String carRent;
-    String days;
-    String age;
-    String amount;
-    String totalAmount;
+    private String days;
+    private String age;
+    private String amount;
+    private String totalAmount;
 
     public String getCarName() {
         return carName;

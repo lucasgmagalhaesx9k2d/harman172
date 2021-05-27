@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
     CheckBox cb1, cb2, cb3;
 
     double[] carRents = {20.5, 18.8, 100, 102, 115.5, 150.6, 90.6, 180, 175.6};
-    double amount;
-
-    double curAmount;
     double age = 0.0;
     int options = 0;
 
@@ -57,11 +54,10 @@ public class MainActivity extends AppCompatActivity {
         carsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i > 0){
-                    etRent.setText(String.valueOf(carRents[i-1]));
+                if (i > 0) {
+                    etRent.setText(String.valueOf(carRents[i - 1]));
                     calculateAmount();
-//                    tvAmount.setText(String.valueOf(carRents[i-1]));
-                } else{
+                } else {
                     clearFields();
                 }
             }
@@ -77,12 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 tvRentDays.setText(String.valueOf(progress));
-
                 calculateAmount();
-
-//                double amt = Double.valueOf(etRent.getText().toString());
-//                curAmount = amt * progress;
-//                tvAmount.setText(String.valueOf(curAmount));
 
             }
 
@@ -101,26 +92,27 @@ public class MainActivity extends AppCompatActivity {
         btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validations()){
+                if (validations()) {
                     CarInfo info = new CarInfo();
+
                     info.setCarName(carsSpinner.getSelectedItem().toString());
                     info.setCarRent(etRent.getText().toString());
                     info.setDays(tvRentDays.getText().toString());
-                    if (rgAge.getCheckedRadioButtonId() == R.id.rb_20){
+
+                    if (rgAge.getCheckedRadioButtonId() == R.id.rb_20) {
                         info.setAge("Person's age is Less than 20");
-                    } else if (rgAge.getCheckedRadioButtonId() == R.id.rb_21){
+                    } else if (rgAge.getCheckedRadioButtonId() == R.id.rb_21) {
                         info.setAge("Person's age is between 21 and 60");
-                    } else if (rgAge.getCheckedRadioButtonId() == R.id.rb_60){
+                    } else if (rgAge.getCheckedRadioButtonId() == R.id.rb_60) {
                         info.setAge("Person ages above 60");
                     }
-
 
                     info.setAmount(tvAmount.getText().toString());
                     info.setTotalAmount(tvTotalAmount.getText().toString());
 
 
                     Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                    intent.putExtra("details",info);
+                    intent.putExtra("details", info);
                     startActivity(intent);
 
 
@@ -133,27 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void selectAge(View view){
+    public void selectAge(View view) {
 
-//        double amt = curAmount;
-//
-//        switch (view.getId()){
-//
-//            case R.id.rb_20:
-//                amt += 5.0;
-//                break;
-//            case R.id.rb_21:
-//                amt += 0.0;
-//                break;
-//            case R.id.rb_60:
-//                amt -= 10;
-//                break;
-//
-//        }
-//        tvAmount.setText(String.valueOf(amt));
-
-
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.rb_20:
                 age = 5.0;
@@ -167,69 +141,33 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        Log.i("AGE", "selectAge: " + age);
         calculateAmount();
     }
 
-    public void selectOptions(View view){
+    public void selectOptions(View view) {
 
-        double amt = Double.valueOf(tvAmount.getText().toString());
-
-
-
-
-//        switch (view.getId()){
-//
-//            case R.id.cb_gps:
-//                if (cb1.isChecked()){
-//                    amt += 5;
-//                } else{
-//                    amt -= 5;
-//                }
-//
-//                break;
-//            case R.id.cb_child:
-//                if (cb2.isChecked()){
-//                    amt += 7;
-//                } else{
-//                    amt -= 7;
-//                }
-//
-//                break;
-//            case R.id.cb_unlimited:
-//                if (cb3.isChecked()){
-//                    amt += 10;
-//                } else{
-//                    amt -= 10;
-//                }
-//
-//                break;
-//        }
-//        tvAmount.setText(String.valueOf(amt));
-
-
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.cb_gps:
-                if (cb1.isChecked()){
+                if (cb1.isChecked()) {
                     options += 5;
-                } else{
+                } else {
                     options -= 5;
                 }
 
                 break;
             case R.id.cb_child:
-                if (cb2.isChecked()){
+                if (cb2.isChecked()) {
                     options += 7;
-                } else{
+                } else {
                     options -= 7;
                 }
 
                 break;
             case R.id.cb_unlimited:
-                if (cb3.isChecked()){
+                if (cb3.isChecked()) {
                     options += 10;
-                } else{
+                } else {
                     options -= 10;
                 }
 
@@ -240,51 +178,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void calculateAmount(){
-        double am = Double.valueOf(etRent.getText().toString());
+    private void calculateAmount() {
+        double amount = Double.valueOf(etRent.getText().toString());
         int days = Integer.valueOf(tvRentDays.getText().toString());
 
-        am *= days;
+        amount *= days;
 
-        am += age;
-        am += options;
+        amount += age;
+        amount += options;
 
-        tvAmount.setText(String.format("%.2f", am));
+        tvAmount.setText(String.format("%.2f", amount));
 
-        tvTotalAmount.setText(String.format("%.2f", totalAmount(am)));
+        tvTotalAmount.setText(String.format("%.2f", totalAmount(amount)));
 
     }
 
 
-    private double totalAmount(double amount){
-        return amount + ( amount * (13.0 / 100));
+    private double totalAmount(double amount) {
+        return amount + (amount * (13.0 / 100));
     }
 
 
-    private boolean validations(){
+    private boolean validations() {
 
-        if (carsSpinner.getSelectedItemPosition() > 0){
-            if (seekBar.getProgress() > 0){
-                if (rgAge.getCheckedRadioButtonId() != -1){
+        if (carsSpinner.getSelectedItemPosition() > 0) {
+            if (seekBar.getProgress() > 0) {
+                if (rgAge.getCheckedRadioButtonId() != -1) {
                     return true;
-                }
-                else{
+                } else {
                     Toast.makeText(this, "Please select age.", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-            }
-            else{
+            } else {
                 Toast.makeText(this, "Please chose number of days for rent.", Toast.LENGTH_SHORT).show();
                 return false;
             }
-        }
-        else{
+        } else {
             Toast.makeText(this, "Please select a car from the list.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
 
-    private void clearFields(){
+    private void clearFields() {
         carsSpinner.setSelection(0);
         etRent.setText(String.valueOf(0.0));
         seekBar.setProgress(1);

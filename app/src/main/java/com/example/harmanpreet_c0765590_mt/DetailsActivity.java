@@ -22,9 +22,6 @@ public class DetailsActivity extends AppCompatActivity {
         CarInfo info = (CarInfo) intent.getSerializableExtra("details");
 
 
-
-
-
         tvName.setText("Car: " + info.getCarName());
         tvRent.setText("Daily Rent: " + info.getCarRent());
         tvDays.setText("Car is rented for " + info.getDays() + " days");
